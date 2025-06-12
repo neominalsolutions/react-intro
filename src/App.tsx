@@ -1,45 +1,44 @@
 import { useState } from 'react';
-import reactLogo from './assets/react.svg';
-import viteLogo from '/vite.svg';
-import './App.css';
-
-// export function Demo() {
-// 	return <>Demo</>;
-// }
-
-// function Demo() {
-// 	return <>Demo</>;
-// }
-
-// export default Demo;
+import InputTextComponent from './components/input.text';
 
 export function App() {
-	const [count, setCount] = useState(0);
+	const [disable, setDisable] = useState(false);
+
+	// Not: Props değerlerinin dinamik olarak değişmesini istersek Component props değerlerini state bağlayabiliriz. State değişince mantıken component yeni değer ile render edileceği için aslında component props'a son güncel state değeri gönderilir.
+
+	const handleInputChange = (value: string | number) => {
+		console.log('value', value);
+	};
 
 	return (
 		<>
-			<div>
-				<a href="https://vite.dev" target="_blank">
-					<img src={viteLogo} className="logo" alt="Vite logo" />
-				</a>
-				<a href="https://react.dev" target="_blank">
-					<img src={reactLogo} className="logo react" alt="React logo" />
-				</a>
-			</div>
-			<h1>Vite + React</h1>
-			<div className="card">
-				<button onClick={() => setCount((count) => count + 1)}>
-					count is {count}
-				</button>
-				<p>
-					Edit <code>src/App.tsx</code> and save to test HMR
-				</p>
-			</div>
-			<p className="read-the-docs">
-				Click on the Vite and React logos to learn more
-			</p>
+			<InputTextComponent
+				sx={{ color: 'red', border: '1px solid gray', padding: 5 }}
+				labelText="Adınız"
+				value={''}
+				disabled={false}
+				onInputChange={handleInputChange}
+			/>
+			<hr></hr>
+			<InputTextComponent
+				sx={{
+					color: 'blue',
+					border: '1px solid blue',
+					padding: 5,
+					borderRadius: 5,
+				}}
+				labelText="Soyadınız"
+				value={'Tekin'}
+				disabled={disable}
+				onInputChange={() => (value: string) => {
+					console.log('value-2', value);
+				}}
+			/>
+			<button onClick={() => setDisable(!disable)}>Enable/Disable</button>
 		</>
 	);
+
+	//const [disable, setDisable] = useState(false);
 }
 
 export default App;
