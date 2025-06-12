@@ -1,7 +1,8 @@
 // import { StrictMode } from 'react';
 import { createRoot } from 'react-dom/client';
 import './index.css';
-import App from './App';
+import UserPage from './components/user.page';
+// import App from './App';
 // import UseEffectDemo from './UseEffectDemo';
 // import { App, Demo } from './App';
 // Bir paket üzerinden birden fazla nesne export edilmiş
@@ -12,12 +13,16 @@ import App from './App';
 
 createRoot(document.getElementById('root')!).render(
 	<>
-		<App />
+		{/* <App /> */}
 		{/* <Demo1 /> */}
 		{/* <RefStateDemo /> */}
 		{/* <Demo2 /> */}
 		{/* <App></App> */}
 		{/* <UseEffectDemo /> */}
+
+		<UserPage />
+
+		{/* <UserListComponent users={[{ name: 'ali', id: 1, email: 'test' }]} /> */}
 	</>
 );
 
